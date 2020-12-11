@@ -1,0 +1,17 @@
+<div class="grid-container">
+    <div (click)="showDetailProduct(i)" class="grid-item" *ngFor="let p of products; let i = index">
+        <img class="productImage" src={{p.imagePath}}>
+        <p>{{p.naam}} voor: {{p.prijs}}</p>
+    </div>
+</div>  
+<div class="overlay" *ngIf="showDetail">
+	<div class="popup">
+		<h2>{{selectedProduct.naam}}</h2>
+		<a class="close" (click)="showDetail = false">&times;</a>
+        <img class="productImage" src={{selectedProduct.imagePath}}>
+        <p> {{selectedProduct.beschrijving}}</p>
+        <p> {{selectedProduct.prijs}}</p>
+        <input #amount value="1" type="number"/>
+        <button (click)="addToCart(amount.value)">add to card</button>
+	</div>
+</div>

@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "../node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -120,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "ipwrc"
+  "defaultProject": "ipwrc",
+  "cli": {
+    "analytics": false
+  }
 }

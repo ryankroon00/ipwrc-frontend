@@ -1,0 +1,85 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto; 
+  padding: 10px;
+  grid-row-gap: 10%;
+}
+  
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 150%;
+  width: 22vw;
+  height: 20vh;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.productImage {
+  height: 80%;
+  width: 100%;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 40%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+  cursor: pointer;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .popup{
+    width: 70%;
+  }
+  .grid-item {
+    font-size: 70%!important;
+  }
+}
+@media screen and (max-width: 1800px){
+  .grid-container{
+    grid-template-columns: auto auto auto; 
+  }
+  .grid-item {
+    width: 30vw;
+    font-size: 100%
+  }
+}

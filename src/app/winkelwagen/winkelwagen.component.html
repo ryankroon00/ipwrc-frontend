@@ -1,14 +1,20 @@
-<div class="product-container" *ngFor="let product of products; let i = index">
-    <img class="productImage" src={{product.imagePath}}>
-    <div class="buttonContainer">
-        <button class="remove" (click)="removeProduct(i)">delete</button>
-        <button class="remove" (click)="editAmount(i,amount.value)">edit</button>
-    </div>
-    <div class="grid-container">
-        <p class="grid-item">Name: {{product.naam}}</p>
-        <p class="grid-item">Price: {{product.prijs}}</p> 
-        <p class="grid-item">Description: {{product.beschrijving}}</p>
-        <p class="grid-item">Amount: <input #amount value={{product.amount}}></p>
-    </div>
+<div class="center">
+    <h1>winkelwagen</h1>
     <hr>
+    <div class="product-container">
+        <div class="grid-container" *ngFor="let product of products; let i = index">
+            <img class="productImage" src={{product.imagePath}}>
+            <p class="grid-item name">Name: {{product.naam}}</p>
+            <p class="grid-item price ">Price: {{product.prijs}}</p> 
+            <button class="btn-danger btn remove button" (click)="removeProduct(i)">delete</button>
+            <p class="grid-item description">Description: {{product.beschrijving}}</p>
+            <p class="grid-item amount">Amount: <input class="amountInput" #amount value={{product.amount}}></p>
+            <button class="btn-primary btn edit button" (click)="editAmount(i,amount.value)">edit amount</button>
+        </div>
+        <hr>
+        <div class="order-grid-container">
+            <p class="totalPrice">totalprice: {{totalPrice}}</p>
+            <button (click)="createOrder()" class="btn btn-success orderButton"> order </button>
+        </div>
+    </div>
 </div>

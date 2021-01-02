@@ -2,12 +2,118 @@
 
 * {
   outline: none;
+  font-family: Arial;
 }
 
 strong {
   font-weight: 600;
 }
 
+.topbar {
+  position: absolute;
+  height: 5vh;
+  width: 70vw;
+  margin-left: 15vw;
+  z-index: 1;
+}
+.social-media{
+  width: 25px;
+  height: 25px;
+  float: right;
+  margin-left: 10px;
+  margin-top: 1%;
+}
+.logo {
+  border: solid;
+  border-top: none;
+  height: calc(5vh + 52px);
+  width: 252px;
+}
+
+.banner {
+  max-height: 500px;
+  min-width: 100%;
+  width: 100vw;
+  position: absolute;
+  margin-top: 5vh;
+  background-image: url("../assets/banner1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  overflow: hidden;
+
+}
+.space {
+  background-color:rgba(139, 119, 83, 0.8);
+  width: calc(15vw + 252px);
+  float: left;
+  height: 10px;
+  height: 52px;
+}
+.topnav {
+  background-color:rgba(139, 119, 83, 0.8);
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  color: white;
+}
+
+.quote {
+  color:white;
+  width: 615px;
+  margin-left: 15vw;
+  z-index: 1;
+}
+
+.quote p {
+  font-size: 500%;
+  -webkit-text-stroke: 1px black; /* width and color */
+}
+.contact {
+  background-color:rgb(197, 33, 33);
+  width: 40%;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+.content {
+  position: relative;
+}
 .page {
   width: 100%;
   height: 10vh;
@@ -16,211 +122,90 @@ strong {
   font-weight: 600;
   letter-spacing: .03em;
   color: #212121;
+}/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 1200px) {
+  .topbar {
+    width: 100vw;
+    margin:0;
+  }
+  .space {
+    width: 252px
+  }
 }
-
-header {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  height: 70px;
-  background: #212121;
-  color: #fff;
-  justify-content: center;
-  align-items: center;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-main {
-  padding: 70px 20px 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-main > div {
-  margin: auto;
-  max-width: 600px;
-}
-
-main h2 span {
-  color: #BF7497;
-}
-
-main p {
-  line-height: 1.5;
-  font-weight: 200;
-  margin: 20px 0;
-}
-
-main small {
-  font-weight: 300;
-  color: #888;
-}
-
-#nav-container {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  pointer-events: none;
-}
-#nav-container .bg {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 70px);
-  visibility: hidden;
-  opacity: 0;
-  transition: .3s;
-  background: #000;
-}
-#nav-container:focus-within .bg {
-  visibility: visible;
-  opacity: .6;
-}
-#nav-container * {
-  visibility: visible;
-}
-
-.buttonHeader {
+.dropdown {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 1;
-  -webkit-appearance: none;
-  border: 0;
-  background: transparent;
-  border-radius: 0;
-  height: 70px;
-  width: 30px;
-  cursor: pointer;
-  pointer-events: auto;
-  margin-left: 25px;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-.icon-bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #aaa;
-  transition: .3s;
-}
-.icon-bar + .icon-bar {
-  margin-top: 5px;
+  display: inline-block;
 }
 
-#nav-container:focus-within .buttonHeader {
-  pointer-events: none;
-}
-#nav-container:focus-within .icon-bar:nth-of-type(1) {
- transform: translate3d(0,8px,0) rotate(45deg);
-}
-#nav-container:focus-within .icon-bar:nth-of-type(2) {
-  opacity: 0;
-}
-#nav-container:focus-within .icon-bar:nth-of-type(3) {
-  transform: translate3d(0,-8px,0) rotate(-45deg);
-}
-
-#nav-content {
-  margin-top: 70px;
-  padding: 20px;
-  width: 90%;
-  max-width: 300px;
+.dropdown-content {
+  display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: calc(100% - 70px);
-  background: #ececec;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  transform: translateX(-100%);
-  transition: transform .3s;
-  will-change: transform;
-  contain: paint;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-#nav-content ul {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#nav-content li a {
-  padding: 10px 5px;
-  display: block;
-  text-transform: uppercase;
-  transition: color .1s;
-}
-
-#nav-content li a:hover {
-  color: #BF7497;
-}
-
-#nav-content li:not(.small) + .small {
-  margin-top: auto;
-}
-
-.small {
-  display: flex;
-  align-self: center;
-}
-
-.small a {
-  font-size: 12px;
-  font-weight: 400;
-  color: #888;
-}
-.small a + a {
-  margin-left: 15px;
-}
-
-#nav-container:focus-within #nav-content {
-  transform: none;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-}
-
-a,
-a:visited,
-a:focus,
-a:active,
-a:link {
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
   text-decoration: none;
-  outline: 0;
+  display: block;
 }
 
-a {
-  color: currentColor;
-  transition: .2s ease-in-out;
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-h1, h2, h3, h4 {
-  margin: 0;
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
-}
 
-img {
-  vertical-align: middle;
-  height: auto;
-  width: 100%;
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .logo{
+    height: calc(3vh + 52px);
+  }
+  .banner {
+    margin-top: 3vh;
+    font-size:100%
+  }
+  .quote {
+    margin:0;
+    width: 400px;
+  }
+  .quote p {
+    font-size:300%;
+  }
 }
-
-.container {
-  width: 80%;
-  padding: 10%;
+@media screen and (max-width: 400px) {
+  .topbar {
+    display:none;
+  }
+  .space {
+    width: 0;
+  }
+  .banner {
+    margin-top: 0;
+  }
 }

@@ -1,1 +1,20 @@
-<p>bestellingen works!</p>
+<h1>bestellingen</h1>
+<hr>
+    <div *ngFor="let bestelling of bestellingen; let i = index">
+        <div class="grid-container" *ngFor="let product of bestelling.products">
+                <img class="productImage" src={{product.imagePath}}>
+                <p class="grid-item name">Name: {{product.naam}}</p>
+                <p class="grid-item price ">Price: {{product.prijs}}</p> 
+                <p class="grid-item description">Description: {{product.beschrijving}}</p>
+                <p class="grid-item amount">Amount: {{product.amount}}</p>
+        </div>
+        <div class="grid-order-container">
+            <p> OrderDate: {{bestelling.orderDate}}</p>
+            <p *ngIf="bestelling.status == '1'"> Status: getting prepared</p>
+            <p *ngIf="bestelling.status == '2'"> Status: on its way</p>
+            <p *ngIf="bestelling.status == '3'"> Status: deliverd</p>
+            <p> Total Price: {{bestelling.totalPrijs}}</p>
+            <button (click)="onCancel(i)" class="btn-danger btn remove button">Cancel</button>
+        </div>
+        <hr>
+</div>

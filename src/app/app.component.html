@@ -1,21 +1,27 @@
-<div class="page">
-  <header tabindex="1">webshop</header>
-  <div id="nav-container">
-    <div class="bg"></div>
-    <div class="buttonHeader" tabindex="0">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <nav id="nav-content" tabindex="1">
-      <ul>
-        <li><a routerLink="/">Producten</a></li>
-        <li><a routerLink="/">Login</a></li>
-        <li><a routerLink="/bestelling">bestellingen</a></li>
-        <li><a routerLink="/winkelwagen">winkelwagen</a></li>
-        <li class="small"><a href="#0">Facebook</a><a href="#0">Instagram</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="page">
+  <section class="topbar">
+      <img src="../assets/logo.png" class="logo">
+      <img src="../assets/facebook.png" class="social-media">
+      <img src="../assets/whatsapp.webp" class="social-media">
+      <img src="../assets/instagram.png" class="social-media">
+      <img src="../assets/twitter.png" class="social-media">
+    </section>
+    <section class="banner"> 
+        <div class="space"></div>
+        <nav class="topnav" id="myTopnav">
+          <a routerLink="/" class="active">Home</a>
+          <a routerLink="/Contact">Contact</a>
+          <a routerLink="/Producten">Producten</a>
+          <img routerLink="login" src="../assets/default.webp" class="social-media">
+          <a href="javascript:void(0);" class="icon" (click)="openHamburgerMenu()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </nav>
+        <section class="quote">
+          <p>Plaagdieren prefentie over bestrijding</p>
+          <button class="contact">contact</button>
+        </section>
+    </section>
+  </div>  
 <router-outlet></router-outlet>

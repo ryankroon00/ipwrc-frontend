@@ -1,3 +1,5 @@
+<h1>producten</h1>
+<hr>
 <div class="grid-container">
     <div (click)="showDetailProduct(i)" class="grid-item" *ngFor="let p of products; let i = index">
         <img class="productImage" src={{p.imagePath}}>
@@ -11,7 +13,44 @@
         <img class="productImage" src={{selectedProduct.imagePath}}>
         <p> {{selectedProduct.beschrijving}}</p>
         <p> {{selectedProduct.prijs}}</p>
-        <input #amount value="1" type="number"/>
-        <button (click)="addToCart(amount.value)">add to card</button>
-	</div>
+        <input class="inputAmount" #amount value="1" type="number"/>
+        <div class="floatButton" *ngIf="user != undefined" >
+            <button class="btn btn-primary" *ngIf="user != undefined || user.role == 'gebruiker'" (click)="addToCart(amount.value)">add to card</button>
+        </div>
+        <div class="floatButton" *ngIf="user != undefined">
+            <button class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="removeProduct(selectedProduct.id)">remove product</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="user != undefined">
+    <button class="btn btn-primary" *ngIf="user.role == 'admin'" (click)="addProductPopup = true">add product</button>
+</div>
+<div class="overlay" *ngIf="addProductPopup">
+	<div class="popup">
+        <a class="close" (click)="addProductPopup = false">&times;</a>
+        <form (ngSubmit)="addProduct(f)" #f="ngForm">
+            <h2>product</h2>
+            <hr>
+            <div id="user-data">
+              <div class="form-group">
+                <label for="name">name</label>
+                <input required ngModel name="name" type="text" id="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="beschrijving">Description</label>
+                <input required email ngModel name="beschrijving" type="text" id="beschrijving" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="imagePath">imagePath</label>
+                <input required ngModel name="imagePath" type="text" id="imagePath" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="prijs">price</label>
+                <input required ngModel name="prijs" type="text" id="prijs" class="form-control">
+              </div>
+            </div>
+            <button class="btn-success btn" type="submit">submit</button>
+          </form>
+    </div>
 </div>

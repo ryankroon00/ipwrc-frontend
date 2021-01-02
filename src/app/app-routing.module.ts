@@ -7,7 +7,6 @@ import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
 
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: "/producten", pathMatch: 'full'},
     {path: 'bestelling', component: BestellingenComponent, children: [
         {path: ':id', component: BestellingenComponent},
     ]},

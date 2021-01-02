@@ -1,0 +1,43 @@
+.productImage {
+    height: 100%;
+    grid-area: picture;
+  }
+  .name {
+    grid-area: name;
+  }
+  .price {
+    grid-area: price;
+  }
+  .description {
+    grid-area: description;
+  }
+  .amount {
+    grid-area: amount;
+  }
+  .edit {
+    grid-area: edit;
+  }
+  .grid-container {
+    display: grid;
+    grid-area: auto auto auto;
+    grid-template-areas: 
+      'picture . name .' 
+      'picture . amount .'
+      'picture . description price';
+    padding: 10px;
+  }
+  .grid-item {
+    font-size: 100%;
+  }
+.grid-order-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+  @media screen and (max-width: 750px){
+    .grid-container{
+      grid-area: auto auto;
+      grid-template-areas: 
+      'name remove' 
+      'amount edit'
+      'description price';  }
+  }

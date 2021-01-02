@@ -1,23 +1,72 @@
 
 .productImage {
-  height: 60%;
-  width: 10%;
+  height: 100%;
+  grid-area: picture;
+}
+.name {
+  grid-area: name;
+}
+.price {
+  grid-area: price;
+}
+.description {
+  grid-area: description;
+}
+.amount {
+  grid-area: amount;
+}
+.remove {
+  grid-area: remove
+}
+.edit {
+  grid-area: edit;
 }
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto; 
+  grid-area: auto auto auto;
+  grid-template-areas: 
+    'picture . name remove' 
+    'picture . amount edit'
+    'picture . description price';
   padding: 10px;
 }
-    
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
   font-size: 100%;
-  height: 2vh;
 }
-.product-container {
-  width: 90vw;
-  margin-left: 5vw;
-}
+
 .buttonContainer {
   float:right;
+  height: 30px;
+  width: 80px;
+}
+.button {
+  height: 80%;
+  width: 100%;
+}
+.totalPrice {
+  grid-area: totalPrice;
+}
+.orderButton{
+  grid-area: orderButton;
+}
+.order-grid-container {
+  display: grid;
+  grid-template-areas: 
+    'totalPrice orderButton .';
+}
+.amountInput {
+  width: 30%;
+}
+.center {
+  width: 80%;
+  margin: 0% 10% 10% 10%;
+}
+
+@media screen and (max-width: 750px){
+  .grid-container{
+    grid-area: auto auto;
+    grid-template-areas: 
+    'name remove' 
+    'amount edit'
+    'description price';  }
 }

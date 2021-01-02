@@ -7,10 +7,15 @@ import { LoginPaginaComponent } from './login-pagina/login-pagina.component';
 import { BestellingenComponent } from './bestellingen/bestellingen.component';
 import { BestellingDetailComponent } from './bestellingen/bestelling-detail/bestelling-detail.component';
 import { ProductenComponent } from './producten/producten.component';
-import { ProductService } from './shared/product.service';
 import { CommonModule } from '@angular/common';
 import { WinkelwagenService } from './shared/winkelwagen.service';
 import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './shared/product/product.service';
+import { UserService } from './shared/user/user.service';
+import { ApiManager } from './utils/api-manager.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,17 @@ import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
     BestellingenComponent,
     BestellingDetailComponent,
     ProductenComponent,
-    WinkelwagenComponent
+    WinkelwagenComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule
+    HttpClientModule,
+    CommonModule,
+    FormsModule
   ],
-  providers: [ProductService, WinkelwagenService],
+  providers: [ProductService, WinkelwagenService, UserService, ApiManager],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

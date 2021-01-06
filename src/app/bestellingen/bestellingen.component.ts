@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Bestelling } from '../shared/bestelling.model';
 import { User } from '../shared/user/user.model';
 import { UserService } from '../shared/user/user.service';
-import { ApiManager } from '../utils/api-manager.service';
+import { ApiManager } from '../shared/api-manager.service';
 
 @Component({
   selector: 'app-bestellingen',
@@ -14,6 +14,7 @@ import { ApiManager } from '../utils/api-manager.service';
 export class BestellingenComponent implements OnInit {
   public bestellingen: Bestelling[];
   public user: User;
+
   constructor(private api: ApiManager, 
               private route: Router, 
               private userService: UserService) { }
@@ -53,5 +54,16 @@ export class BestellingenComponent implements OnInit {
         }
       )
     }
+  }
+
+  public upgradeStatus(index: number){
+    let id = this.bestellingen[index].id;
+    this.api.createPutRequest('/order/status/' + id , "")
+    this.loadBestellingen();
+  }
+
+  ngAfterViewInit(){
+    let elmnt = document.getElementsByClassName("center");
+    elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

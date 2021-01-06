@@ -1,4 +1,3 @@
-import { ThrowStmt } from "@angular/compiler";
 import { Bestelling } from "../bestelling.model";
 
 export class User{

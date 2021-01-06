@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Staatliches&display=swap');
+
+.center {
+    width: 70%;
+    margin: calc(10vh + 400px) 10% 10% 15%;
+    font-family: 'Open Sans', sans-serif;
+  }
+  table {
+    width: 100%;
+  }
+  @media screen and (max-width: 600px){
+    .center {
+      width: 100%;
+      margin: calc(15vh + 700px) 0% 0% 0%;
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+  

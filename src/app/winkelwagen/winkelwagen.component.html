@@ -5,16 +5,13 @@
         <div class="grid-container" *ngFor="let product of products; let i = index">
             <img class="productImage" src={{product.imagePath}}>
             <p class="grid-item name">Name: {{product.naam}}</p>
-            <p class="grid-item price ">Price: {{product.prijs}}</p> 
+            <p class="grid-item price ">Price: {{product.prijs}} p/u</p> 
             <button class="btn-danger btn remove button" (click)="removeProduct(i)">delete</button>
             <p class="grid-item description">Description: {{product.beschrijving}}</p>
-            <p class="grid-item amount">Amount: <input class="amountInput" #amount value={{product.amount}}></p>
-            <button class="btn-primary btn edit button" (click)="editAmount(i,amount.value)">edit amount</button>
         </div>
         <hr>
         <div class="order-grid-container">
-            <p class="totalPrice">totalprice: {{totalPrice}}</p>
-            <button (click)="createOrder()" class="btn btn-success orderButton"> order </button>
+            <button (click)="createOrder()" class="btn btn-success orderButton"> Bevestig </button>
         </div>
     </div>
 </div>

@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed:400,600');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Staatliches&display=swap');
 * {
   outline: none;
-  font-family: Arial;
 }
 
 strong {
@@ -15,6 +13,7 @@ strong {
   width: 70vw;
   margin-left: 15vw;
   z-index: 1;
+  font-family: 'Staatliches', cursive;
 }
 .social-media{
   width: 25px;
@@ -23,17 +22,24 @@ strong {
   margin-left: 10px;
   margin-top: 1%;
 }
+.loginIcon{
+  width: 45px;
+  height: 45px;
+  float: right;
+  margin-right: 15vw;
+  margin-top: 0.5%;
+}
 .logo {
-  border: solid;
+  border: 1px solid rgba(139, 119, 83, 0.8);;
   border-top: none;
-  height: calc(5vh + 52px);
+  height: calc(5vh + 54px);
   width: 252px;
 }
 
 .banner {
-  max-height: 500px;
+  height: 500px;
   min-width: 100%;
-  width: 100vw;
+  width: 99vw;
   position: absolute;
   margin-top: 5vh;
   background-image: url("../assets/banner1.png");
@@ -48,8 +54,7 @@ strong {
   background-color:rgba(139, 119, 83, 0.8);
   width: calc(15vw + 252px);
   float: left;
-  height: 10px;
-  height: 52px;
+  height: 54px;
 }
 .topnav {
   background-color:rgba(139, 119, 83, 0.8);
@@ -94,10 +99,11 @@ strong {
 }
 
 .quote {
+  font-family: 'Staatliches', cursive;
   color:white;
-  width: 615px;
+  width: 450px;
   margin-left: 15vw;
-  z-index: 1;
+  position: absolute;
 }
 
 .quote p {
@@ -107,9 +113,11 @@ strong {
 .contact {
   background-color:rgb(197, 33, 33);
   width: 40%;
+  height: 30px;
   border-radius: 10px;
   border: none;
   margin-bottom: 20px;
+  font-family: 'Encode Sans Condensed', sans-serif;
 }
 .content {
   position: relative;
@@ -122,15 +130,6 @@ strong {
   font-weight: 600;
   letter-spacing: .03em;
   color: #212121;
-}/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 1200px) {
-  .topbar {
-    width: 100vw;
-    margin:0;
-  }
-  .space {
-    width: 252px
-  }
 }
 .dropdown {
   position: relative;
@@ -163,16 +162,43 @@ strong {
   background-color: #3e8e41;
 }
 
+.loginButton{
+  visibility: hidden;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 1350px) {
+  .topbar {
+    width: 100vw;
+    margin:0;
+  }
+  .space {
+    width: 252px;
+    height: 1px;
+  }
+  .loginIcon {
+    margin:0;
+  }
+  .social-media {
+    margin-top: 0;
+  }
+}
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+    z-index: 1000;
+    float: right;
+    width: calc(100% - 252px);
+
+  }
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
@@ -183,29 +209,52 @@ strong {
     display: block;
     text-align: left;
   }
-  .logo{
-    height: calc(3vh + 52px);
+  .loginIcon {
+    display: none;
   }
-  .banner {
-    margin-top: 3vh;
-    font-size:100%
+  .loginButton{
+    visibility: visible;
+  }
+  .homeButton {
+    visibility: hidden;
   }
   .quote {
-    margin:0;
-    width: 400px;
-  }
-  .quote p {
-    font-size:300%;
+    margin-top: 5vh;
   }
 }
-@media screen and (max-width: 400px) {
-  .topbar {
-    display:none;
+@media screen and (max-width: 600px){
+  .topnav {
+    width: calc(100% - 120px);
+    float: right;
   }
-  .space {
-    width: 0;
+  .topnav.responsive{
+    width: calc(100% - 120px);
+  }
+  .logo{
+    height: 52px;
+    width: 120px;
   }
   .banner {
     margin-top: 0;
+    font-size:100%;
+    height: 100vh;
+  }
+  .quote {
+    margin:0;
+    width: 100%;
+    margin-top:20%;
+    text-align: center;
+  }
+  .quote p {
+    font-size:400%;
+  }
+  .topbar {
+    height:0px;
+  }
+  .social-media {
+    display: none;
+  }
+  .space {
+    width: 0;
   }
 }

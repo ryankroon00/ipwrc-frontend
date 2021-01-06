@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { rejects } from 'assert';
+import { ApiManager } from '../shared/api-manager.service';
 import { User } from '../shared/user/user.model';
 import { UserService } from '../shared/user/user.service';
-import { ApiManager } from '../utils/api-manager.service';
 
 @Component({
   selector: 'app-login-pagina',
@@ -17,10 +16,12 @@ export class LoginPaginaComponent implements OnInit {
   public isLoading = false;
   public user: User;
   public form: FormGroup;
+  public error: string = null;
 
   constructor(private route: Router,
               private userService: UserService,
-              private api: ApiManager) { }
+              private api: ApiManager
+              ) { }
 
   ngOnInit(): void {
     if (this.userService.user != null){
@@ -47,7 +48,7 @@ export class LoginPaginaComponent implements OnInit {
         this.isLoading = false;
       }
     ).catch((error) => {
-      alert(error.error.error)
+      this.error = error.error.error;
       this.isLoading = false;
     });
   }
@@ -62,10 +63,11 @@ export class LoginPaginaComponent implements OnInit {
       response => {
         this.login = true;
         this.isLoading = false;
-        alert("register succesvol")
+        this.error = "register succesvol";
+        this.isLoading = false;
       }
     ).catch((error) => {
-      alert(error.error.error)
+      this.error = error.error.error;
       this.isLoading = false;
     });
   }
@@ -75,5 +77,14 @@ export class LoginPaginaComponent implements OnInit {
     this.loggedIn = false;
     this.user = null;
     this.api.removeBearerToken();
+  }
+
+  onHandleError() {
+    this.error = null;
+    this.isLoading = false;
+  }
+  ngAfterViewInit(){
+    let elmnt = document.getElementsByClassName("center");
+    elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

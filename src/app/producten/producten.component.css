@@ -1,22 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Staatliches&display=swap');
+ 
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto; 
-  padding: 10px;
-  grid-row-gap: 10%;
 }
   
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  font-size: 150%;
-  width: 22vw;
-  height: 20vh;
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
   cursor: pointer;
   pointer-events: auto;
 }
+.grid-item p {
+  font-size: 150%;
+}
 .productImage {
-  height: 80%;
-  width: 100%;
+  height: 200px;
+  width: calc(100% - 3px);
+  max-width: 300px;
 }
 .overlay {
   position: fixed;
@@ -33,13 +40,17 @@
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 30vh auto;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
   width: 40%;
   position: relative;
   transition: all 5s ease-in-out;
+  height: 40%;
+}
+.addProduct {
+  margin-top: 10px;
 }
 
 .popup h2 {
@@ -73,21 +84,55 @@
 .floatButton {
   float:left;
 }
-
-@media screen and (max-width: 700px){
-  .popup{
-    width: 70%;
-  }
-  .grid-item {
-    font-size: 70%!important;
-  }
+.overlay .admin {
+  height: auto;
 }
+
+.aanvragen {
+  background-color:rgb(197, 33, 33);
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 150%;
+}
+
+.center {
+  width: 70%;
+  margin: 500px 10% 10% 15%;
+}
+
 @media screen and (max-width: 1800px){
   .grid-container{
     grid-template-columns: auto auto auto; 
   }
   .grid-item {
-    width: 30vw;
     font-size: 100%
+  }
+}
+@media screen and (max-width: 900px){
+  .center {
+    margin-left:0;
+    width: 100vw;
+    margin: calc(15vh + 670px) 0% 0% 0%;
+
+  }
+  .grid-container{
+    grid-template-columns: auto auto; 
+  }
+}
+@media screen and (max-width: 650px){
+  .popup{
+    width: 90%;
+    height: 65vh;
+    margin-top: 50px;
+  }
+  .grid-item {
+    font-size: 70%!important;
+    border: none;
+  }
+  .grid-container{
+    grid-template-columns: auto; 
   }
 }

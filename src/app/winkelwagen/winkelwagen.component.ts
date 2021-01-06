@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiManager } from '../shared/api-manager.service';
 import { Bestelling } from '../shared/bestelling.model';
 import { Product } from '../shared/product/product.model';
 import { UserService } from '../shared/user/user.service';
 import { WinkelwagenService } from '../shared/winkelwagen.service';
-import { ApiManager } from '../utils/api-manager.service';
 
 @Component({
   selector: 'app-winkelwagen',
@@ -35,7 +35,7 @@ export class WinkelwagenComponent implements OnInit {
   }
 
   editAmount(index: number, amount: number): void {
-    this.winkelService.editProduct(index, amount);
+    this.winkelService.editProduct(index, 1);
   }
 
   createOrder(): void{
@@ -50,5 +50,9 @@ export class WinkelwagenComponent implements OnInit {
       alert("you have to login before you can order something");
       this.route.navigate(['login']);
     }
+  }
+  ngAfterViewInit(){
+    let elmnt = document.getElementsByClassName("center");
+    elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

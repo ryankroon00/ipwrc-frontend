@@ -29,9 +29,14 @@
   .grid-item {
     font-size: 100%;
   }
+  .center {
+    width: 70%;
+    margin: 500px 10% 10% 15%;
+  }
 .grid-order-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
 }
   @media screen and (max-width: 750px){
     .grid-container{
@@ -40,4 +45,9 @@
       'name remove' 
       'amount edit'
       'description price';  }
+    .center {
+      margin-left:0;
+      width: 100vw;
+      margin: calc(15vh + 670px) 0% 0% 0%;
+    }
   }

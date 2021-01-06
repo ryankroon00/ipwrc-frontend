@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiManager } from '../shared/api-manager.service';
 import { Product } from '../shared/product/product.model';
 import { ProductService } from '../shared/product/product.service';
 import { User } from '../shared/user/user.model';
 import { UserService } from '../shared/user/user.service';
 import { WinkelwagenService } from '../shared/winkelwagen.service';
-import { ApiManager } from '../utils/api-manager.service';
 
 @Component({
   selector: 'app-producten',
@@ -20,7 +20,8 @@ export class ProductenComponent implements OnInit {
   public selectedProduct: Product;
   public user: User;
 
-  constructor(private api: ApiManager,
+  constructor(private route: Router,
+              private api: ApiManager,
               private productService: ProductService, 
               private winkelwageService: WinkelwagenService,
               private userService: UserService) { }
@@ -33,10 +34,11 @@ export class ProductenComponent implements OnInit {
     this.products = this.productService.getProducts();
   }
 
-  addToCart(amount: number): void{
+  addToCart(): void{
     this.showDetail = false;
-    this.selectedProduct.amount = amount;
+    this.selectedProduct.amount = 1;
     this.winkelwageService.addProduct(this.selectedProduct);
+    this.route.navigate(['../winkelwagen']);
   }
 
   showDetailProduct(index: number): void{
@@ -64,11 +66,16 @@ export class ProductenComponent implements OnInit {
 
   addProduct(form: NgForm){
     const product = new Product(form.value.name, form.value.beschrijving, form.value.imagePath, form.value.prijs);
+    console.log(product)
     this.api.createPostRequest('/product',JSON.stringify(product)).then(
       restult => {
         this.loadProducts();
       }
     );
   
+  }
+  ngAfterViewInit(){
+    let elmnt = document.getElementsByClassName("center");
+    elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

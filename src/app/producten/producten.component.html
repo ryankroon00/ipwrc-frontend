@@ -1,56 +1,59 @@
-<h1>producten</h1>
-<hr>
-<div class="grid-container">
-    <div (click)="showDetailProduct(i)" class="grid-item" *ngFor="let p of products; let i = index">
+<div class="center" >
+  <h1>producten</h1>
+  <hr>
+  <div class="grid-container">
+      <div (click)="showDetailProduct(i)" class="grid-item" *ngFor="let p of products; let i = index">
         <img class="productImage" src={{p.imagePath}}>
-        <p>{{p.naam}} voor: {{p.prijs}}</p>
-    </div>
-</div>  
-<div class="overlay" *ngIf="showDetail">
-	<div class="popup">
-		<h2>{{selectedProduct.naam}}</h2>
-		<a class="close" (click)="showDetail = false">&times;</a>
-        <img class="productImage" src={{selectedProduct.imagePath}}>
-        <p> {{selectedProduct.beschrijving}}</p>
-        <p> {{selectedProduct.prijs}}</p>
-        <input class="inputAmount" #amount value="1" type="number"/>
-        <div class="floatButton" *ngIf="user != undefined" >
-            <button class="btn btn-primary" *ngIf="user != undefined || user.role == 'gebruiker'" (click)="addToCart(amount.value)">add to card</button>
-        </div>
-        <div class="floatButton" *ngIf="user != undefined">
-            <button class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="removeProduct(selectedProduct.id)">remove product</button>
-        </div>
-    </div>
-</div>
+        <p> <b>{{p.naam}} voor: {{p.prijs}}</b></p>
+        <p> {{p.beschrijving}}</p>
+        <button class="aanvragen" >Aanvragen</button>
+      </div>
+  </div>  
+  <div class="overlay" *ngIf="showDetail">
+    <div class="popup">
+      <h2>{{selectedProduct.naam}}</h2>
+      <a class="close" (click)="showDetail = false">&times;</a>
+          <img class="productImage" src={{selectedProduct.imagePath}}>
+          <p> {{selectedProduct.beschrijving}}</p>
+          <p> {{selectedProduct.prijs}} p/u</p>
+          <div class="floatButton" *ngIf="user != undefined" >
+              <button class="btn btn-primary" *ngIf="user != undefined || user.role == 'gebruiker'" (click)="addToCart()">aanvragen</button>
+          </div>
+          <div class="floatButton" *ngIf="user != undefined">
+              <button class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="removeProduct(selectedProduct.id)">remove product</button>
+          </div>
+      </div>
+  </div>
 
-<div *ngIf="user != undefined">
-    <button class="btn btn-primary" *ngIf="user.role == 'admin'" (click)="addProductPopup = true">add product</button>
-</div>
-<div class="overlay" *ngIf="addProductPopup">
-	<div class="popup">
-        <a class="close" (click)="addProductPopup = false">&times;</a>
-        <form (ngSubmit)="addProduct(f)" #f="ngForm">
-            <h2>product</h2>
-            <hr>
-            <div id="user-data">
-              <div class="form-group">
-                <label for="name">name</label>
-                <input required ngModel name="name" type="text" id="name" class="form-control">
+  <div class="addProduct" *ngIf="user != undefined">
+      <button class="btn btn-primary" *ngIf="user.role == 'admin'" (click)="addProductPopup = true">add product</button>
+  </div>
+  <div class="overlay" *ngIf="addProductPopup">
+    <div class="popup admin">
+          <a class="close" (click)="addProductPopup = false">&times;</a>
+          <form (ngSubmit)="addProduct(f)" #f="ngForm">
+              <h2>product</h2>
+              <hr>
+              <div id="user-data">
+                <div class="form-group">
+                  <label for="name">name</label>
+                  <input required ngModel name="name" type="text" id="name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="beschrijving">Description</label>
+                  <input required email ngModel name="beschrijving" type="text" id="beschrijving" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="imagePath">imagePath</label>
+                  <input required ngModel name="imagePath" type="text" id="imagePath" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="prijs">price</label>
+                  <input required ngModel name="prijs" type="text" id="prijs" class="form-control">
+                </div>
               </div>
-              <div class="form-group">
-                <label for="beschrijving">Description</label>
-                <input required email ngModel name="beschrijving" type="text" id="beschrijving" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="imagePath">imagePath</label>
-                <input required ngModel name="imagePath" type="text" id="imagePath" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="prijs">price</label>
-                <input required ngModel name="prijs" type="text" id="prijs" class="form-control">
-              </div>
-            </div>
-            <button class="btn-success btn" type="submit">submit</button>
-          </form>
-    </div>
+              <button class="btn-success btn" type="submit">submit</button>
+            </form>
+      </div>
+  </div>
 </div>

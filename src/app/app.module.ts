@@ -13,9 +13,12 @@ import { WinkelwagenComponent } from './winkelwagen/winkelwagen.component';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './shared/product/product.service';
 import { UserService } from './shared/user/user.service';
-import { ApiManager } from './utils/api-manager.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ContactComponent } from './contact/contact.component';
+import { AlertComponent } from './shared/alert/alert.component';
+import { ApiManager } from './shared/api-manager.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     BestellingDetailComponent,
     ProductenComponent,
     WinkelwagenComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ContactComponent,
+    AlertComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

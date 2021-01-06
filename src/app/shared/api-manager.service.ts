@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http/';
 import { Injectable } from '@angular/core';
-import { map, min } from 'rxjs/operators';
 
 @Injectable()
 export class ApiManager {
@@ -17,6 +16,7 @@ export class ApiManager {
     }
 
     public removeBearerToken(): void{
+        this.createGetRequest('/user/logout').then();
         this.bearer = null;
     }
 
@@ -47,8 +47,13 @@ export class ApiManager {
     }
 
     public createPutRequest(endPoint: string, data: string): any{
-        //todo 
-    }
+        if(this.bearer != null){
+            this.headersList = this.headersList.append('Authorization', this.bearer);
+        } else {
+            this.setHeaderList();
+        }
+        
+        return this.http.put(this.apiUrl + endPoint, data, {headers: this.headersList}).toPromise();    }
 
     public createDeleteRequest(endPoint: string, params?: string): any{
         // setting bearer if its present

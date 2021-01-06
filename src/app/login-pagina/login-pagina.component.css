@@ -1,4 +1,11 @@
 .center {
-    width: 80%;
-    margin: 30% 10% 10% 10%;
+    width: 70%;
+    margin: 500px 10% 10% 15%;
+}
+@media screen and (max-width: 600px){
+  .center {
+    margin-left:0;
+    width: 100vw;
+    margin: calc(15vh + 670px) 0% 0% 0%;
+  }
 }

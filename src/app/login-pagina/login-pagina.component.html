@@ -68,3 +68,4 @@
     <hr>
     <app-loading-spinner></app-loading-spinner>
   </div>
+  <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>

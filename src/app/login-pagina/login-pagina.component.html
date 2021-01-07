@@ -1,11 +1,11 @@
 <div class="center" *ngIf="!isLoading">
-  <form *ngIf="login == true && loggedIn == false" (ngSubmit)="onLogin(f)" #f="ngForm">
+  <form *ngIf="login == true && loggedIn == false" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
     <h1>User - login</h1>
     <hr>
       <div id="user-data">
         <div class="form-group">
           <label for="username">Username</label>
-          <input required ngModel name="username" type="text" id="username" class="form-control">
+          <input required [(ngModel)]="username" name="username" type="text" id="username" class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Password</label>
@@ -26,19 +26,19 @@
       <div id="user-data">
         <div class="form-group">
           <label for="username">Username</label>
-          <input required ngModel name="username" type="text" id="username" class="form-control">
+          <input required ngModel [(ngModel)]="username"  name="username" type="text" id="username" class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input required email ngModel name="email" type="text" id="email" class="form-control">
+          <input required email [(ngModel)]="email"  name="email" type="text" id="email" class="form-control">
         </div>
         <div class="form-group">
           <label for="adres">Adres</label>
-          <input required ngModel name="adres" type="text" id="adres" class="form-control">
+          <input required [(ngModel)]="adres" name="adres" type="text" id="adres" class="form-control">
         </div>
         <div class="form-group">
           <label for="postcode">Postcode</label>
-          <input required ngModel name="postcode" type="text" id="postcode" class="form-control">
+          <input required [(ngModel)]="postcode" name="postcode" type="text" id="postcode" class="form-control">
         </div>
         <div class="form-group">
           <label for="email">Password</label>

@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ApiManager {
-    private readonly apiUrl = 'https://ryankroon.tk';
+    //private readonly apiUrl = 'https://ryankroon.tk';
+    private readonly apiUrl = 'http://localhost:5230';
     private bearer: string;
     private headersList: HttpHeaders;
 

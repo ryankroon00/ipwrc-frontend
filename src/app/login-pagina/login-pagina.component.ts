@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiManager } from '../shared/api-manager.service';
@@ -17,7 +17,10 @@ export class LoginPaginaComponent implements OnInit {
   public user: User;
   public form: FormGroup;
   public error: string = null;
-
+  public username: string;
+  public email: string;
+  public postcode: string;
+  
   constructor(private route: Router,
               private userService: UserService,
               private api: ApiManager
@@ -35,9 +38,9 @@ export class LoginPaginaComponent implements OnInit {
     this.isLoading = true;
 
     const userData = { username: form.value.username, password: form.value.password}
-    const registerPromise = this.api.createPostRequest('/user/login', JSON.stringify(userData));
+    const loginPromise = this.api.createPostRequest('/user/login', JSON.stringify(userData));
 
-    registerPromise.then(
+    loginPromise.then(
       response => {
         const loggedInUser = new User(response.id, response.username, response.email, response.adres, response.postcode);
         loggedInUser.jwt = response.refreshToken;
@@ -51,6 +54,7 @@ export class LoginPaginaComponent implements OnInit {
       this.error = error.error.error;
       this.isLoading = false;
     });
+    this.username = form.value.username;
   }
 
   onRegister(form: NgForm): void{
@@ -70,6 +74,9 @@ export class LoginPaginaComponent implements OnInit {
       this.error = error.error.error;
       this.isLoading = false;
     });
+    this.username = form.value.username;
+    this.email = form.value.email;
+    this.postcode = form.value.postcode;
   }
 
   logout(): void{

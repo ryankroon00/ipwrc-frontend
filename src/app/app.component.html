@@ -1,11 +1,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class="page">
   <section class="topbar">
-      <img  src="../assets/logo.png" class="logo">
-      <img src="../assets/facebook.png" class="social-media">
-      <img src="../assets/whatsapp.webp" class="social-media">
-      <img src="../assets/instagram.png" class="social-media">
-      <img src="../assets/twitter.png" class="social-media">
+      <img src="../assets/logo.png" routerLink="" class="logo">
+      <a href="facebook.com"><img src="../assets/facebook.png" class="social-media"></a>
+      <a href=""><img src="../assets/whatsapp.webp" class="social-media"></a>
+      <a href="instagram.com"><img src="../assets/instagram.png"  class="social-media"></a>
+      <a href="http://twitter.com"><img src="../assets/twitter.png"  class="social-media"></a>
     </section>
     <section class="banner"> 
         <div class="space"></div>
@@ -14,6 +14,7 @@
           <a routerLink="producten"(click)="openHamburgerMenu()">Producten</a>
           <a routerLink="bestelling"(click)="openHamburgerMenu()">Bestelling</a>
           <a routerLink="winkelwagen" (click)="openHamburgerMenu()">Winkelwagen</a>
+          <a routerLink="admin" *ngIf(user != null) (click)="openHamburgerMenu()">Winkelwagen</a>
           <img routerLink="login" src="../assets/default.webp" class="loginIcon" (click)="openHamburgerMenu()">
           <a routerLink="login" class="loginButton" (click)="openHamburgerMenu()">User</a>
           <a href="javascript:void(0);" class="icon" (click)="openHamburgerMenu()">
@@ -22,7 +23,7 @@
         </nav>
         <section class="quote">
           <p>Plaagdieren prefentie over bestrijding</p>
-          <button class="contact" routerLink="producten">producten</button>
+          <button class="productenBanner" routerLink="producten">producten</button>
         </section>
     </section>
   </div>  

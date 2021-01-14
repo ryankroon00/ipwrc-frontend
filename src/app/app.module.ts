@@ -19,6 +19,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { ApiManager } from './shared/api-manager.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     LoadingSpinnerComponent,
     ContactComponent,
     AlertComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

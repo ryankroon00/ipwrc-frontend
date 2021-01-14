@@ -17,9 +17,10 @@
           <p> {{selectedProduct.beschrijving}}</p>
           <p> {{selectedProduct.prijs}} p/u</p>
           <div class="floatButton" *ngIf="user != undefined" >
-              <button class="btn btn-primary" *ngIf="user != undefined || user.role == 'gebruiker'" (click)="addToCart()">aanvragen</button>
+              <button class="btn btn-primary" *ngIf="user.role == 'gebruiker'" (click)="addToCart()">aanvragen</button>
           </div>
           <div class="floatButton" *ngIf="user != undefined">
+              <button class="btn btn-primary" *ngIf="user.role == 'admin'" (click)="OpenUpdateProduct(selectedProduct.id)">update product</button>
               <button class="btn btn-danger" *ngIf="user.role == 'admin'" (click)="removeProduct(selectedProduct.id)">remove product</button>
           </div>
       </div>
@@ -37,19 +38,19 @@
               <div id="user-data">
                 <div class="form-group">
                   <label for="name">name</label>
-                  <input required ngModel name="name" type="text" id="name" class="form-control">
+                  <input required [(ngModel)]="productUpdate.naam" #name="ngModel" ngModel name="name" type="text" id="name" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="beschrijving">Description</label>
-                  <input required email ngModel name="beschrijving" type="text" id="beschrijving" class="form-control">
+                  <input required  #email="ngModel" [(ngModel)]="productUpdate.beschrijving" ngModel name="beschrijving" type="text" id="beschrijving" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="imagePath">imagePath</label>
-                  <input required ngModel name="imagePath" type="text" id="imagePath" class="form-control">
+                  <input required #imagePath="ngModel" [(ngModel)]="productUpdate.imagePath" ngModel name="imagePath" type="text" id="imagePath" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="prijs">price</label>
-                  <input required ngModel name="prijs" type="text" id="prijs" class="form-control">
+                  <input required ngModel #price="ngModel" [(ngModel)]="productUpdate.prijs" name="prijs" type="text" id="prijs" class="form-control">
                 </div>
               </div>
               <button class="btn-success btn" type="submit">submit</button>

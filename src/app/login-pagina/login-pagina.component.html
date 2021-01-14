@@ -56,11 +56,13 @@
     <div *ngIf="loggedIn == true">
       <h1>User - already logged in</h1>
       <hr>
-      <p>name: {{user.name}}</p>
+      <p>name: {{user.username}}</p>
       <p>adres: {{user.adres}}</p>
       <p>email: {{user.email}}</p>
       <p>postcode: {{user.postcode}}</p>
-      <button (click)="logout()" class="btn btn-danger">logout</button>
+      <button (click)="logout()" *ngIf="user" class="btn btn-danger">logout</button>
+      <button (click)="openAdminPage()" *ngIf="user.role == 'admin'" class="btn btn-primary">admin</button>
+
     </div>
   </div>
   <div *ngIf="isLoading" class="center">

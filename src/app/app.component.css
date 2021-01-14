@@ -22,12 +22,20 @@ strong {
   margin-left: 10px;
   margin-top: 1%;
 }
+
+.social-media:hover {
+  cursor: pointer;
+}
+
 .loginIcon{
   width: 45px;
   height: 45px;
   float: right;
   margin-right: 15vw;
   margin-top: 0.5%;
+}
+.loginIcon:hover {
+  cursor: pointer;
 }
 .logo {
   border: 1px solid rgba(139, 119, 83, 0.8);;
@@ -110,7 +118,7 @@ strong {
   font-size: 500%;
   -webkit-text-stroke: 1px black; /* width and color */
 }
-.contact {
+.productenBanner {
   background-color:rgb(197, 33, 33);
   width: 40%;
   height: 30px;
@@ -118,6 +126,9 @@ strong {
   border: none;
   margin-bottom: 20px;
   font-family: 'Encode Sans Condensed', sans-serif;
+}
+.productenBanner:hover {
+  background-color:rgb(180, 34, 34);
 }
 .content {
   position: relative;

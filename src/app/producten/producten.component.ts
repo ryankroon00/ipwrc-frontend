@@ -19,6 +19,7 @@ export class ProductenComponent implements OnInit {
   public addProductPopup = false;
   public selectedProduct: Product;
   public user: User;
+  public productUpdate: Product;
 
   constructor(private route: Router,
               private api: ApiManager,
@@ -55,6 +56,15 @@ export class ProductenComponent implements OnInit {
     );    
   }
 
+  OpenUpdateProduct(id: number){
+    for(let i = 0; i < this.products.length; i++){
+      if(this.products[i].id == id){
+        this.productUpdate = this.products[i]
+      }
+    }
+    this.addProductPopup = true;
+  }
+
   loadProducts(){
     this.api.createGetRequest('/products').then(
       products => {
@@ -65,15 +75,25 @@ export class ProductenComponent implements OnInit {
   }
 
   addProduct(form: NgForm){
-    const product = new Product(form.value.name, form.value.beschrijving, form.value.imagePath, form.value.prijs);
-    console.log(product)
-    this.api.createPostRequest('/product',JSON.stringify(product)).then(
-      restult => {
-        this.loadProducts();
-      }
-    );
-  
+    if(this.productUpdate == null){
+        const product = new Product(form.value.name, form.value.beschrijving, form.value.imagePath, form.value.prijs);
+        this.api.createPostRequest('/product',JSON.stringify(product)).then(
+          restult => {
+            this.loadProducts();
+          }
+        );
+    } else {
+      this.api.createPutRequest('/product/'+ this.productUpdate.id, JSON.stringify(this.productUpdate)).then(
+        result => {
+          this.productUpdate = null;
+          this.loadProducts()
+        }
+      )
+    }
+    this.addProductPopup = false;
+    this.showDetail = false;
   }
+  
   ngAfterViewInit(){
     let elmnt = document.getElementsByClassName("center");
     elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});

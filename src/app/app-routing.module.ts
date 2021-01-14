@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AppComponent } from './app.component';
 import { BestellingenComponent } from './bestellingen/bestellingen.component';
 import { ContactComponent } from './contact/contact.component';
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     {path: 'bestelling', component: BestellingenComponent, children: [
         {path: ':id', component: BestellingenComponent},
     ]},
+    {path: 'admin', component: AdminPageComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'producten', component: ProductenComponent},
     {path: 'login', component: LoginPaginaComponent},

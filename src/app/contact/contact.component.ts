@@ -12,4 +12,8 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){
+    let elmnt = document.getElementsByClassName("center");
+    elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }

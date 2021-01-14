@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ApiManager {
-    //private readonly apiUrl = 'https://ryankroon.tk';
-    private readonly apiUrl = 'http://localhost:5230';
+    private readonly apiUrl = 'https://ryankroon.tk';
+    //private readonly apiUrl = 'http://localhost:5430';
     private bearer: string;
     private headersList: HttpHeaders;
 
@@ -17,7 +17,9 @@ export class ApiManager {
     }
 
     public removeBearerToken(): void{
-        this.createGetRequest('/user/logout').then();
+        this.createGetRequest('/user/logout').then(
+            result => {}
+        );
         this.bearer = null;
     }
 
@@ -54,7 +56,8 @@ export class ApiManager {
             this.setHeaderList();
         }
         
-        return this.http.put(this.apiUrl + endPoint, data, {headers: this.headersList}).toPromise();    }
+        return this.http.put(this.apiUrl + endPoint, data, {headers: this.headersList}).toPromise();    
+    }
 
     public createDeleteRequest(endPoint: string, params?: string): any{
         // setting bearer if its present
@@ -71,6 +74,7 @@ export class ApiManager {
                 return this.http.delete(this.apiUrl + endPoint, {headers: this.headersList}).toPromise();
             }
     }
+    
     private setHeaderList(){
         this.headersList = new HttpHeaders();
         this.headersList = this.headersList.append('Content-Type', 'application/json');

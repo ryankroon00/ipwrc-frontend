@@ -20,6 +20,7 @@ export class LoginPaginaComponent implements OnInit {
   public username: string;
   public email: string;
   public postcode: string;
+  public adres: string;
   
   constructor(private route: Router,
               private userService: UserService,
@@ -77,8 +78,13 @@ export class LoginPaginaComponent implements OnInit {
     this.username = form.value.username;
     this.email = form.value.email;
     this.postcode = form.value.postcode;
+    this.adres = form.value.adres;
   }
 
+  openAdminPage(){
+    this.route.navigate(['/admin']);
+  }
+  
   logout(): void{
     this.userService.user = null;
     this.loggedIn = false;

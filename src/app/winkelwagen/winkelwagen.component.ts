@@ -14,6 +14,7 @@ import { WinkelwagenService } from '../shared/winkelwagen.service';
 export class WinkelwagenComponent implements OnInit {
   public products: Product[];
   public totalPrice: number;
+  
   constructor(
     private winkelService: WinkelwagenService, 
     private route: Router,
@@ -40,7 +41,6 @@ export class WinkelwagenComponent implements OnInit {
 
   createOrder(): void{
     if (this.userService.user != null){
-
       const bestelling = new Bestelling(this.totalPrice, this.products,this.userService.user.id);
       this.winkelService.removeProducts();
       
@@ -51,6 +51,7 @@ export class WinkelwagenComponent implements OnInit {
       this.route.navigate(['login']);
     }
   }
+  
   ngAfterViewInit(){
     let elmnt = document.getElementsByClassName("center");
     elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});

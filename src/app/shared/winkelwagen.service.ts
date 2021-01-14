@@ -34,7 +34,7 @@ export class WinkelwagenService {
             this.totalPrice = 0;
         } else {
             this.products.forEach(element => {
-                this.totalPrice = this.totalPrice + element.prijs;
+                this.totalPrice = this.totalPrice + parseFloat(element.prijs);
             });
         }
         return this.totalPrice;

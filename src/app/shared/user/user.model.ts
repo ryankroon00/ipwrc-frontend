@@ -3,7 +3,7 @@ import { Bestelling } from "../bestelling.model";
 export class User{
     public id: number;
     public jwt: string;
-    public name: string;
+    public username: string;
     public email: string;
     public adres: string;
     public postcode: string;
@@ -12,7 +12,7 @@ export class User{
 
     constructor(id: number, name: string, email: string, adres: string, postcode: string){
         this.id = id;
-        this.name = name;
+        this.username = name;
         this.email = email;
         this.adres = adres;
         this.postcode = postcode;

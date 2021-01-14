@@ -1,0 +1,11 @@
+<div class="center">
+    <div *ngFor="let user of users">
+        <p>Naam: {{user.username}}</p>
+        <p>Email {{user.email}}</p>
+        <p>Postcode {{user.postcode}}</p>
+        <p>Role: {{user.role}}</p>
+        <button (click)="changeRole(user.id)" class="btn btn-primary">Change role</button>
+        <button (click)="removeUser(user.id)" class="btn btn-danger">Remove user</button>
+        <hr>
+    </div>
+</div>

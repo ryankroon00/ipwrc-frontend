@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiManager {
     private readonly apiUrl = 'https://ryankroon.tk';
-    //private readonly apiUrl = 'http://localhost:5430';
+    //private readonly apiUrl = 'http://localhost:5001';
     private bearer: string;
     private headersList: HttpHeaders;
 
@@ -51,11 +51,10 @@ export class ApiManager {
 
     public createPutRequest(endPoint: string, data: string): any{
         if(this.bearer != null){
-            this.headersList = this.headersList.append('Authorization', this.bearer);
+            this.headersList = this.headersList.append('Authorization', ["Bearer " + this.bearer]);
         } else {
             this.setHeaderList();
         }
-        
         return this.http.put(this.apiUrl + endPoint, data, {headers: this.headersList}).toPromise();    
     }
 

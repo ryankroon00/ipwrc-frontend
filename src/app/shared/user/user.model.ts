@@ -7,6 +7,7 @@ export class User{
     public email: string;
     public adres: string;
     public postcode: string;
+    public password : string;
     public role: string;
     public bestellingen: Bestelling[];
 

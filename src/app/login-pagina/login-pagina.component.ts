@@ -21,6 +21,7 @@ export class LoginPaginaComponent implements OnInit {
   public email: string;
   public postcode: string;
   public adres: string;
+  public editProfile = false;
   
   constructor(private route: Router,
               private userService: UserService,
@@ -35,6 +36,7 @@ export class LoginPaginaComponent implements OnInit {
       this.loggedIn = false;
     }
   }
+
   onLogin(form: NgForm): void{
     this.isLoading = true;
 
@@ -96,6 +98,22 @@ export class LoginPaginaComponent implements OnInit {
     this.error = null;
     this.isLoading = false;
   }
+
+  openEdit(){
+    this.editProfile = true;
+  }
+
+  onUpdateUser(form: NgForm){
+    this.user.password = form.value.password;
+    console.log(this.user.password)
+    const data = JSON.stringify(this.user);
+    this.api.createPutRequest("/users/" + this.user.id, data).then(
+      result => {
+        this.editProfile = false;
+      }
+    )
+  }
+
   ngAfterViewInit(){
     let elmnt = document.getElementsByClassName("center");
     elmnt[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
